@@ -3,7 +3,7 @@
 Public Class Conexion
 
 #Region "Variables conexion"
-    Private _Base As String
+    Private _DataBase As String
     Private _Servidor As String
     Private _Usuario As String
     Private _clave As String
@@ -12,14 +12,13 @@ Public Class Conexion
 #End Region
 
 
-
 #Region "Propiedades de la clase"
-    Public Property Base As String
+    Public Property DataBase As String
         Get
-            Return _Base
+            Return _DataBase
         End Get
         Set(value As String)
-            _Base = value
+            _DataBase = value
         End Set
     End Property
 
@@ -67,13 +66,32 @@ Public Class Conexion
     'Declaracion de un constructor con la palabra reservada New()
     'Asignacon a las variables locales con la Me. --> equivalente a this.
     Public Sub New()
-        Me.Base = ""
-        Me.Servidor = ""
-        Me.Usuario = ""
-        Me.Clave = ""
-        Me.conn = 
+        Me.DataBase = "nombre de la base de datos"
+        Me.Servidor = "Mi instancia de sql server"
+        Me.Usuario = "sa"
+        Me.Clave = "Password"
+        Me.conn = New SqlConnection(CrearCadena())
+
     End Sub
 
+#End Region
+
+
+#Region "Cadena de coneccion que retorna un string CrearCadena()"
+
+    Public Function CrearCadena()
+        Dim cadena As String
+
+        cadena = "Server=" & Me.Servidor & ";Database=" & Me.DataBase & ";"
+
+        If Me.Seguridad Then
+            cadena = cadena & "Integrated Security = SSPI;"
+        Else
+            cadena = cadena & "User Id=" & Me.Usuario & ";Password=" & Me.Clave & ";"
+        End If
+
+        Return cadena
+    End Function
 #End Region
 
 End Class
