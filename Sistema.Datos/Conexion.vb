@@ -6,7 +6,7 @@ Public Class Conexion
     Private _Servidor As String
     Private _Usuario As String
     Private _Clave As String
-    Private _Seguridad As Boolean = True
+    Private _Seguridad As Boolean = False
     Public conn As SqlConnection
     Public Property Base As String
         Get
@@ -55,7 +55,8 @@ Public Class Conexion
 
     Public Sub New()
         Me.Base = "db_sistemas"
-        Me.Servidor = "DESKTOP-JSC6DST\SQLEXPRESS"
+        'Me.Servidor = "DESKTOP-JSC6DST\SQLEXPRESS"
+        Me.Servidor = "PC01547"
         Me.Usuario = "sa"
         Me.Clave = "Coco14.negrita90"
         Me.conn = New SqlConnection(CrearCadena)

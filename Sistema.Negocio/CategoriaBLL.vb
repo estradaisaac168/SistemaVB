@@ -14,17 +14,13 @@ Public Class CategoriaBLL
         Try
 
             Dim Repositorio As New CategoriaDAL()
-            Dim Tabla As DataTable = Repositorio.Listar()
-
-            If Tabla Is Nothing OrElse Tabla.Rows.Count = 0 Then
-                Return New DataTable() ' DataTable vacío
-            End If
-
+            Dim Tabla As New DataTable
+            Tabla = Repositorio.Listar()
             Return Tabla
 
         Catch ex As DataAccessException
             LogError("Error en la capa de lógica de negocio en Listar(). " & ex.Message)
-            Throw New BusinessLogicException("Hubo un problema al listar las categorías. Intente nuevamente.")
+            Throw New BusinessLogicException("Hubo un problema al listar las categorías. Intente nuevamente." & ex.Message)
 
         Catch ex As Exception
             LogError("Error inesperado en la capa de lógica de negocio en Listar(). " & ex.Message)
@@ -35,17 +31,11 @@ Public Class CategoriaBLL
 
 
 
-
-
-
     Public Function Buscar(Valor As String) As DataTable
         Try
             Dim Repositorio As New CategoriaDAL()
-            Dim Tabla As DataTable = Repositorio.Buscar(Valor)
-            If Tabla Is Nothing OrElse Tabla.Rows.Count = 0 Then
-                Return New DataTable() ' DataTable vacío
-            End If
-
+            Dim Tabla As New DataTable
+            Tabla = Repositorio.Buscar(Valor)
             Return Tabla
 
         Catch ex As DataAccessException
@@ -60,149 +50,136 @@ Public Class CategoriaBLL
 
 
 
-    'Public Function Insertar(Obj As Categoria) As Boolean
-    '    Try
-    '        ' Crear una instancia del repositorio para manejar la inserción
-    '        Dim Repositorio As New CategoriaDAL()
+    Public Function Insertar(Obj As Categoria) As Boolean
 
-    '        ' Llamar al método de inserción del repositorio
-    '        Repositorio.Insertar(Obj)
+        Dim Inserted = False
 
-    '        ' Retornar True si la inserción fue exitosa
-    '        Return True
+        Try
+            ' Crear una instancia del repositorio para manejar la inserción
+            Dim Repositorio As New CategoriaDAL()
 
-    '    Catch ex As DataAccessException
-    '        ' Registrar error específico de acceso a la base de datos
-    '        LogError("Error en la capa de negocio en Insertar(): " & ex.Message)
+            ' Llamar al método de inserción del repositorio
+            Repositorio.Insertar(Obj)
+            Inserted = True
 
-    '        ' Devolver False si hubo un error en la base de datos
-    '        Return False
+            ' Retornar True si la inserción fue exitosa
+            Return Inserted
 
-    '    Catch ex As Exception
-    '        ' Registrar cualquier otro error inesperado
-    '        LogError("Error inesperado en la capa de negocio en Insertar(): " & ex.Message)
+        Catch ex As DataAccessException
+            LogError("Error en la capa de negocio en Insertar(): " & ex.Message)
+            Throw New BusinessLogicException("Hubo un problema al guardar la categoría. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            LogError("Error inesperado en la capa de negocio en Insertar(): " & ex.Message)
+            Throw New BusinessLogicException("Error desconocido al guardar la categoria." & ex.Message)
+        End Try
 
-    '        ' Devolver False en caso de error inesperado
-    '        Return False
-    '    End Try
-    'End Function
-
+        Return Inserted
+    End Function
 
 
-    'Public Function Actualizar(Obj As Categoria) As Boolean
-    '    Try
-    '        ' Crear una instancia del repositorio para manejar la actualización
-    '        Dim Repositorio As New CategoriaDAL()
 
-    '        ' Llamar al método de actualización del repositorio
-    '        Repositorio.Actualizar(Obj)
+    Public Function Actualizar(Obj As Categoria) As Boolean
+        Dim Updated = False
 
-    '        ' Retornar True si la actualización fue exitosa
-    '        Return True
+        Try
+            ' Crear una instancia del repositorio para manejar la actualización
+            Dim Repositorio As New CategoriaDAL()
 
-    '    Catch ex As DataAccessException
-    '        ' Registrar error de acceso a la base de datos
-    '        LogError("Error en la capa de negocio en Actualizar(): " & ex.Message)
+            ' Llamar al método de actualización del repositorio
+            Repositorio.Actualizar(Obj)
+            Updated = True
 
-    '        ' Devolver False en caso de error relacionado con la base de datos
-    '        Return False
+            ' Retornar True si la actualización fue exitosa
+            Return Updated
 
-    '    Catch ex As Exception
-    '        ' Registrar cualquier otro error inesperado
-    '        LogError("Error inesperado en la capa de negocio en Actualizar(): " & ex.Message)
-
-    '        ' Devolver False en caso de error inesperado
-    '        Return False
-    '    End Try
-    'End Function
+        Catch ex As DataAccessException
+            LogError("Error en la capa de negocio en Insertar(): " & ex.Message)
+            Throw New BusinessLogicException("Hubo un problema al actualizar la categoría. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            LogError("Error inesperado en la capa de negocio en actualizar : " & ex.Message)
+            Throw New BusinessLogicException("Error desconocido al actualizar  la categoria." & ex.Message)
+        End Try
+        Return Updated
+    End Function
 
 
 
 
-    '' Método para Eliminar
-    'Public Function Eliminar(Id As Integer) As Boolean
-    '    Try
-    '        ' Crear una instancia del repositorio
-    '        Dim Repositorio As New CategoriaDAL()
+    ' Método para Eliminar
+    Public Function Eliminar(Id As Integer) As Boolean
 
-    '        ' Llamar al método Eliminar del repositorio
-    '        Repositorio.Eliminar(Id)
-    '        Return True
+        Dim Deleted = False
 
-    '    Catch ex As DataAccessException
-    '        ' Log del error en caso de un problema con la base de datos
-    '        LogError("Error al eliminar la categoría con ID " & Id & ". " & ex.Message)
 
-    '        ' Retornar False si ocurre un error de base de datos
-    '        Return False
+        Try
+            ' Crear una instancia del repositorio
+            Dim Repositorio As New CategoriaDAL()
 
-    '    Catch ex As Exception
-    '        ' Log para otros errores inesperados
-    '        LogError("Error inesperado al eliminar la categoría con ID " & Id & ". " & ex.Message)
+            ' Llamar al método Eliminar del repositorio
+            Repositorio.Eliminar(Id)
+            Deleted = True
+            Return Deleted
 
-    '        ' Retornar False si ocurre cualquier otro error inesperado
-    '        Return False
-    '    End Try
-    'End Function
+        Catch ex As DataAccessException
+            ' Log del error en caso de un problema con la base de datos
+            LogError("Error al eliminar la categoría con ID " & Id & ". " & ex.Message)
+            Throw New BusinessLogicException("Hubo un problema al eliminar la categoría. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            ' Log para otros errores inesperados
+            Throw New BusinessLogicException("Hubo un problema al eliminar la categoría. Intente nuevamente." & ex.Message)
+        End Try
+        Return Deleted
+    End Function
 
 
 
 
 
-    '' Método para Desactivar
-    'Public Function Desactivar(Id As Integer) As Boolean
-    '    Try
-    '        ' Crear una instancia del repositorio
-    '        Dim Repositorio As New CategoriaDAL()
+    ' Método para Desactivar
+    Public Function Desactivar(Id As Integer) As Boolean
 
-    '        ' Llamar al método Desactivar del repositorio
-    '        Repositorio.Desactivar(Id)
-    '        Return True
+        Dim Activated = False
+        Try
+            ' Crear una instancia del repositorio
+            Dim Repositorio As New CategoriaDAL()
 
-    '    Catch ex As DataAccessException
-    '        ' Log del error en caso de un problema con la base de datos
-    '        LogError("Error al desactivar la categoría con ID " & Id & ". " & ex.Message)
+            ' Llamar al método Desactivar del repositorio
+            Repositorio.Desactivar(Id)
+            Activated = True
+            Return Activated
 
-    '        ' Retornar False si ocurre un error de base de datos
-    '        Return False
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al desactivar la categoría. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            Throw New BusinessLogicException("Hubo un problema al desactivar la categoría. Intente nuevamente." & ex.Message)
+        End Try
+        Return Activated
 
-    '    Catch ex As Exception
-    '        ' Log para otros errores inesperados
-    '        LogError("Error inesperado al desactivar la categoría con ID " & Id & ". " & ex.Message)
-
-    '        ' Retornar False si ocurre cualquier otro error inesperado
-    '        Return False
-    '    End Try
-    'End Function
+    End Function
 
 
 
 
-    '' Método para Activar
-    'Public Function Activar(Id As Integer) As Boolean
-    '    Try
-    '        ' Crear una instancia del repositorio
-    '        Dim Repositorio As New CategoriaDAL()
+    ' Método para Activar
+    Public Function Activar(Id As Integer) As Boolean
+        Dim Activated = False
 
-    '        ' Llamar al método Activar del repositorio
-    '        Repositorio.Activar(Id)
-    '        Return True
+        Try
+            ' Crear una instancia del repositorio
+            Dim Repositorio As New CategoriaDAL()
 
-    '    Catch ex As DataAccessException
-    '        ' Log del error en caso de un problema con la base de datos
-    '        LogError("Error al activar la categoría con ID " & Id & ". " & ex.Message)
+            ' Llamar al método Activar del repositorio
+            Repositorio.Activar(Id)
+            Activated = True
+            Return Activated
 
-    '        ' Retornar False si ocurre un error de base de datos
-    '        Return False
-
-    '    Catch ex As Exception
-    '        ' Log para otros errores inesperados
-    '        LogError("Error inesperado al activar la categoría con ID " & Id & ". " & ex.Message)
-
-    '        ' Retornar False si ocurre cualquier otro error inesperado
-    '        Return False
-    '    End Try
-    'End Function
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al activar la categoría. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            Throw New BusinessLogicException("Hubo un problema al activar la categoría. Intente nuevamente." & ex.Message)
+        End Try
+        Return Activated
+    End Function
 
 
 

@@ -27,6 +27,7 @@ Public Class CategoriaDAL
         Finally
             MyBase.conn.Close()
         End Try
+        Return Nothing
     End Function
 
 
@@ -49,7 +50,122 @@ Public Class CategoriaDAL
         Finally
             MyBase.conn.Close()
         End Try
+        Return Nothing
     End Function
+
+
+
+
+    Public Sub Insertar(Obj As Categoria)
+
+        Try
+
+            Dim Comando As New SqlCommand("categoria_insertar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre
+            Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion
+            MyBase.conn.Open()
+            Comando.ExecuteNonQuery()
+            MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar insertar.")
+        Catch ex As Exception
+            Throw New DataAccessException("Error desconocido al intentar insertar.")
+        Finally
+            MyBase.conn.Close()
+        End Try
+
+    End Sub
+
+
+
+
+    Public Sub Actualizar(Obj As Categoria)
+        Try
+
+            Dim Comando As New SqlCommand("categoria_actualizar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria
+            Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre
+            Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion
+            MyBase.conn.Open()
+            Comando.ExecuteNonQuery()
+            MyBase.conn.Close()
+
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar actualizar.")
+        Catch ex As Exception
+            Throw New DataAccessException("Error desconocido al intentar actualizar.")
+        Finally
+            MyBase.conn.Close()
+        End Try
+    End Sub
+
+
+
+
+    Public Sub Eliminar(Id As Integer)
+
+        Try
+
+            Dim Comando As New SqlCommand("categoria_eliminar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Id
+            MyBase.conn.Open()
+            Comando.ExecuteNonQuery()
+            MyBase.conn.Close()
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+        Finally
+            MyBase.conn.Close()
+        End Try
+
+    End Sub
+
+
+
+
+
+    Public Sub Desactivar(Id As Integer)
+
+        Try
+
+            Dim Comando As New SqlCommand("categoria_desactivar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Id
+            MyBase.conn.Open()
+            Comando.ExecuteNonQuery()
+            MyBase.conn.Close()
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+        Finally
+            MyBase.conn.Close()
+        End Try
+
+    End Sub
+
+
+
+
+
+    Public Sub Activar(Id As Integer)
+
+        Try
+
+            Dim Comando As New SqlCommand("categoria_activar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Id
+            MyBase.conn.Open()
+            Comando.ExecuteNonQuery()
+            MyBase.conn.Close()
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+        Finally
+            MyBase.conn.Close()
+        End Try
+
+    End Sub
+
 
 
     'Public Function Buscar(Valor As String) As DataTable
