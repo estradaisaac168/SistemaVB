@@ -4,13 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14C656B8-779F-4272-9BA2-86F60A5E2A6D}</ProjectGuid>
+    <ProjectGuid>{33829E0F-9391-4881-A2F7-587CC807F1DF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Sistema.Datos</RootNamespace>
-    <AssemblyName>Sistema.Datos</AssemblyName>
+    <RootNamespace>Sistema.Exceptions</RootNamespace>
+    <AssemblyName>Sistema.Exceptions</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Sistema.Datos.xml</DocumentationFile>
+    <DocumentationFile>Sistema.Exceptions.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Sistema.Datos.xml</DocumentationFile>
+    <DocumentationFile>Sistema.Exceptions.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -64,8 +64,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.vb" />
-    <Compile Include="CategoriaDAL.vb" />
+    <Compile Include="BusinessLogicException.vb" />
+    <Compile Include="DataAccessException.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -100,16 +100,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sistema.Entidades\Sistema.Entidades.vbproj">
-      <Project>{9fdd77ce-9d40-4efb-8242-849d1afec55d}</Project>
-      <Name>Sistema.Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sistema.Exceptions\Sistema.Exceptions.vbproj">
-      <Project>{33829e0f-9391-4881-a2f7-587cc807f1df}</Project>
-      <Name>Sistema.Exceptions</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

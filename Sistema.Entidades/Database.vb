@@ -7,9 +7,9 @@
         'Listar categorias
         'create proc categoria_listar
         'as
-        'select idcategoria as ID, nombre as Nombre, description as Description, estado as Estado
-        'from categoria
-        'order by idcategoria desc
+        'Select Case idcategoria As ID, nombre As Nombre, description As Description, estado As Estado
+        'From categoria
+        'Order By idcategoria desc
         'go
 
 
