@@ -154,6 +154,7 @@ Public Class FrmCategoria
 
     'Evento Check()
     Private Sub ChkSeleccionar_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSeleccionar.CheckedChanged
+
         If ChkSeleccionar.CheckState = CheckState.Checked Then
             Me.MostrarComponentes()
         Else
