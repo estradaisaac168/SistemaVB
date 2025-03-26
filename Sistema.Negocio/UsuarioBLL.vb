@@ -34,6 +34,34 @@ Public Class UsuarioBLL
     End Function
 
 
+
+    Public Function Buscar(Email As String, Clave As String) As Usuario
+        Try
+            Dim UsuarioActual As New Usuario
+            Dim Datos As New UsuarioDAL
+            Dim Tabla As New DataTable
+            Tabla = Datos.Login(Email, Clave)
+            If (Tabla.Rows.Count > 0) Then
+                UsuarioActual.IdUsuario = Tabla.Rows(0).Item(0).ToString
+                UsuarioActual.IdRol = Tabla.Rows(0).Item(1).ToString
+                UsuarioActual.Rol = Tabla.Rows(0).Item(2).ToString
+                UsuarioActual.Nombre = Tabla.Rows(0).Item(3).ToString
+                UsuarioActual.Estado = Tabla.Rows(0).Item(4).ToString
+
+                Return UsuarioActual
+            Else
+                Return Nothing
+            End If
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema con el login usuarios. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            Throw New BusinessLogicException("Error desconocido al intentar iniciar session.")
+        End Try
+        Return Nothing
+    End Function
+
+
+
     Public Function Insertar(Obj As Usuario) As Boolean
         Dim Inserted = False
 

@@ -11,6 +11,7 @@
     Private _Email As String
     Private _Clave As String
     Private _Estado As Byte
+    Private _Rol As String
 
 #End Region
 
@@ -104,6 +105,15 @@
         End Get
         Set(value As Byte)
             _Estado = value
+        End Set
+    End Property
+
+    Public Property Rol As String
+        Get
+            Return _Rol
+        End Get
+        Set(value As String)
+            _Rol = value
         End Set
     End Property
 #End Region
