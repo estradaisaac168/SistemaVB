@@ -40,7 +40,8 @@ Public Class ArticuloBLL
         Try
             Dim RepositorioArticulo As New ArticuloDAL
             RepositorioArticulo.Insertar(Obj)
-            Return Inserted = True
+            Inserted = True
+            Return Inserted
         Catch ex As DataAccessException
             Throw New BusinessLogicException("Hubo un problema al guardar el articulo. Intente nuevamente." & ex.Message)
         Catch ex As Exception
@@ -56,7 +57,8 @@ Public Class ArticuloBLL
         Try
             Dim Datos As New ArticuloDAL
             Datos.Actualizar(Obj)
-            Return Upadated = True
+            Upadated = True
+            Return Upadated
         Catch ex As DataAccessException
             Throw New BusinessLogicException("Hubo un problema al actualizar el articulo. Intente nuevamente." & ex.Message)
         Catch ex As Exception
@@ -71,7 +73,8 @@ Public Class ArticuloBLL
         Try
             Dim Datos As New ArticuloDAL
             Datos.Eliminar(Id)
-            Return Deleted = True
+            Deleted = True
+            Return Deleted
         Catch ex As DataAccessException
             Throw New BusinessLogicException("Hubo un problema al eliminar el articulo. Intente nuevamente." & ex.Message)
         Catch ex As Exception
@@ -86,7 +89,8 @@ Public Class ArticuloBLL
         Try
             Dim Datos As New ArticuloDAL
             Datos.Desactivar(Id)
-            Return Activated = True
+            Activated = True
+            Return Activated
         Catch ex As DataAccessException
             Throw New BusinessLogicException("Hubo un problema al desactivar  el articulo. Intente nuevamente." & ex.Message)
         Catch ex As Exception
@@ -100,7 +104,8 @@ Public Class ArticuloBLL
         Try
             Dim Datos As New ArticuloDAL
             Datos.Activar(Id)
-            Return Activated = True
+            Activated = True
+            Return Activated
         Catch ex As DataAccessException
             Throw New BusinessLogicException("Hubo un problema al activar  el articulo. Intente nuevamente." & ex.Message)
         Catch ex As Exception

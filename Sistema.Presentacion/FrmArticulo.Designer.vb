@@ -32,6 +32,12 @@ Partial Class FrmArticulo
         Me.TxtStock = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TxtNombre = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TxtPrecioVenta = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TxtCodigo = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.PicImage = New System.Windows.Forms.PictureBox()
         Me.BtnCargarImagen = New System.Windows.Forms.Button()
         Me.TxtImagen = New System.Windows.Forms.TextBox()
@@ -50,12 +56,6 @@ Partial Class FrmArticulo
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.DgvListado = New System.Windows.Forms.DataGridView()
         Me.TabArticulo = New System.Windows.Forms.TabControl()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TxtCodigo = New System.Windows.Forms.TextBox()
-        Me.TxtPrecioVenta = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TxtNombre = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.ErrorIcono, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.PicImage, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,7 +70,7 @@ Partial Class FrmArticulo
         '
         'BtnActualizar
         '
-        Me.BtnActualizar.Location = New System.Drawing.Point(145, 474)
+        Me.BtnActualizar.Location = New System.Drawing.Point(145, 445)
         Me.BtnActualizar.Name = "BtnActualizar"
         Me.BtnActualizar.Size = New System.Drawing.Size(142, 23)
         Me.BtnActualizar.TabIndex = 7
@@ -156,6 +156,54 @@ Partial Class FrmArticulo
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Mantenimiento"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TxtNombre
+        '
+        Me.TxtNombre.Location = New System.Drawing.Point(144, 281)
+        Me.TxtNombre.Name = "TxtNombre"
+        Me.TxtNombre.Size = New System.Drawing.Size(367, 20)
+        Me.TxtNombre.TabIndex = 19
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(59, 281)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(57, 13)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "Nombre (*)"
+        '
+        'TxtPrecioVenta
+        '
+        Me.TxtPrecioVenta.Location = New System.Drawing.Point(145, 241)
+        Me.TxtPrecioVenta.Name = "TxtPrecioVenta"
+        Me.TxtPrecioVenta.Size = New System.Drawing.Size(367, 20)
+        Me.TxtPrecioVenta.TabIndex = 17
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(60, 241)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(81, 13)
+        Me.Label6.TabIndex = 16
+        Me.Label6.Text = "Precio Venta (*)"
+        '
+        'TxtCodigo
+        '
+        Me.TxtCodigo.Location = New System.Drawing.Point(145, 153)
+        Me.TxtCodigo.Name = "TxtCodigo"
+        Me.TxtCodigo.Size = New System.Drawing.Size(367, 20)
+        Me.TxtCodigo.TabIndex = 15
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(59, 153)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(53, 13)
+        Me.Label5.TabIndex = 14
+        Me.Label5.Text = "Codigo (*)"
         '
         'PicImage
         '
@@ -327,54 +375,6 @@ Partial Class FrmArticulo
         Me.TabArticulo.SelectedIndex = 0
         Me.TabArticulo.Size = New System.Drawing.Size(1136, 615)
         Me.TabArticulo.TabIndex = 1
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(59, 153)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(53, 13)
-        Me.Label5.TabIndex = 14
-        Me.Label5.Text = "Codigo (*)"
-        '
-        'TxtCodigo
-        '
-        Me.TxtCodigo.Location = New System.Drawing.Point(145, 153)
-        Me.TxtCodigo.Name = "TxtCodigo"
-        Me.TxtCodigo.Size = New System.Drawing.Size(367, 20)
-        Me.TxtCodigo.TabIndex = 15
-        '
-        'TxtPrecioVenta
-        '
-        Me.TxtPrecioVenta.Location = New System.Drawing.Point(145, 241)
-        Me.TxtPrecioVenta.Name = "TxtPrecioVenta"
-        Me.TxtPrecioVenta.Size = New System.Drawing.Size(367, 20)
-        Me.TxtPrecioVenta.TabIndex = 17
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(60, 241)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(81, 13)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "Precio Venta (*)"
-        '
-        'TxtNombre
-        '
-        Me.TxtNombre.Location = New System.Drawing.Point(144, 281)
-        Me.TxtNombre.Name = "TxtNombre"
-        Me.TxtNombre.Size = New System.Drawing.Size(367, 20)
-        Me.TxtNombre.TabIndex = 19
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(59, 281)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(57, 13)
-        Me.Label7.TabIndex = 18
-        Me.Label7.Text = "Nombre (*)"
         '
         'FrmArticulo
         '

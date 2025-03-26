@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports Sistema.Entidades
+Imports Sistema.Exceptions
 
 Public Class ArticuloDAL
     Inherits Conexion
@@ -17,10 +18,12 @@ Public Class ArticuloDAL
             MyBase.conn.Close()
             Return Tabla
         Catch ex As Exception
-            Throw New ApplicationException("Error en la capa de acceso a datos metodo listar")
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+
         Finally
             MyBase.conn.Close()
         End Try
+        'Return Nothing
     End Function
 
 
@@ -37,10 +40,12 @@ Public Class ArticuloDAL
             MyBase.conn.Close()
             Return Tabla
         Catch ex As Exception
-            Throw New ApplicationException("Error en la capa de acceso a datos metodo buscar")
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+
         Finally
             MyBase.conn.Close()
         End Try
+        'Return Nothing
     End Function
 
 
@@ -58,8 +63,12 @@ Public Class ArticuloDAL
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar insertar.")
         Catch ex As Exception
-            Throw ex
+            Throw New DataAccessException("Error desconocido al intentar insertar.")
+        Finally
+            MyBase.conn.Close()
         End Try
     End Sub
 
@@ -80,8 +89,12 @@ Public Class ArticuloDAL
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar actualizar.")
         Catch ex As Exception
-            Throw ex
+            Throw New DataAccessException("Error desconocido al intentar actualizar.")
+        Finally
+            MyBase.conn.Close()
         End Try
     End Sub
 
@@ -93,8 +106,12 @@ Public Class ArticuloDAL
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar eliminar.")
         Catch ex As Exception
-            Throw ex
+            Throw New DataAccessException("Error desconocido al intentar eliminar.")
+        Finally
+            MyBase.conn.Close()
         End Try
     End Sub
 
@@ -106,8 +123,12 @@ Public Class ArticuloDAL
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar desactivar.")
         Catch ex As Exception
-            Throw ex
+            Throw New DataAccessException("Error desconocido al intentar desactivar.")
+        Finally
+            MyBase.conn.Close()
         End Try
     End Sub
 
@@ -119,8 +140,12 @@ Public Class ArticuloDAL
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()
+        Catch ex As SqlException
+            Throw New DataAccessException("Error al acceder a la base de datos al intentar activar.")
         Catch ex As Exception
-            Throw ex
+            Throw New DataAccessException("Error desconocido al intentar activar.")
+        Finally
+            MyBase.conn.Close()
         End Try
     End Sub
 
