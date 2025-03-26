@@ -55,6 +55,26 @@ Public Class CategoriaDAL
 
 
 
+    Public Function Seleccionar() As DataTable
+        Try
+            Dim Resultado As SqlDataReader
+            Dim Tabla As New DataTable
+            Dim Comando As New SqlCommand("categoria_seleccionar", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            MyBase.conn.Open()
+            Resultado = Comando.ExecuteReader()
+            Tabla.Load(Resultado)
+            MyBase.conn.Close()
+            Return Tabla
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+
+        Finally
+            MyBase.conn.Close()
+        End Try
+        Return Nothing
+    End Function
+
 
     Public Sub Insertar(Obj As Categoria)
 
