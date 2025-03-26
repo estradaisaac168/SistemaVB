@@ -27,6 +27,7 @@ Public Class CategoriaBLL
             Throw New BusinessLogicException("Error desconocido al intentar listar las categorías.")
 
         End Try
+        Return Nothing
     End Function
 
 
@@ -46,9 +47,29 @@ Public Class CategoriaBLL
             LogError("Error inesperado en la capa de lógica de negocio en Buscar(). " & ex.Message)
             Throw New BusinessLogicException("Error desconocido al intentar realizar la búsqueda.")
         End Try
+        Return Nothing
     End Function
 
 
+    Public Function Seleccionar() As DataTable
+        Try
+
+            Dim Repositorio As New CategoriaDAL()
+            Dim Tabla As New DataTable
+            Tabla = Repositorio.Seleccionar()
+            Return Tabla
+
+        Catch ex As DataAccessException
+            LogError("Error en la capa de lógica de negocio en Listar(). " & ex.Message)
+            Throw New BusinessLogicException("Hubo un problema al listar las categorías. Intente nuevamente." & ex.Message)
+
+        Catch ex As Exception
+            LogError("Error inesperado en la capa de lógica de negocio en Listar(). " & ex.Message)
+            Throw New BusinessLogicException("Error desconocido al intentar listar las categorías.")
+
+        End Try
+        Return Nothing
+    End Function
 
     Public Function Insertar(Obj As Categoria) As Boolean
 

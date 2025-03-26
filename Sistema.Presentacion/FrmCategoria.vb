@@ -194,6 +194,7 @@ Public Class FrmCategoria
     End Sub
 
     Private Sub BtnActivar_Click(sender As Object, e As EventArgs) Handles BtnActivar.Click
+
         If (MsgBox("Deseas activar los registros seleccionados?", vbYesNo + vbQuestion, "Activar registro") = vbYes) Then
             Try
 
