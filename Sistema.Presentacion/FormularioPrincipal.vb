@@ -104,4 +104,16 @@ Public Class FormularioPrincipal
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
+    Private Sub RolesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RolesToolStripMenuItem.Click
+        Dim frm As New FrmRol
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        Dim frm As New FrmUsuario
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 End Class

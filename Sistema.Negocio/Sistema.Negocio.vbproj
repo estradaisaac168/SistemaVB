@@ -81,6 +81,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="CategoriaBLL.vb" />
+    <Compile Include="RolBLL.vb" />
+    <Compile Include="UsuarioBLL.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
