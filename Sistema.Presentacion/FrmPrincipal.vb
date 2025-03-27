@@ -194,4 +194,10 @@ Public Class FrmPrincipal
     Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         End
     End Sub
+
+    Private Sub ProveedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem.Click
+        Dim frm As New FrmProveedor
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 End Class

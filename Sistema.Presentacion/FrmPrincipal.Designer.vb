@@ -203,13 +203,13 @@ Partial Class FrmPrincipal
         'CategoriasToolStripMenuItem
         '
         Me.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.CategoriasToolStripMenuItem.Text = "Cate&gorias"
         '
         'ArticulosToolStripMenuItem
         '
         Me.ArticulosToolStripMenuItem.Name = "ArticulosToolStripMenuItem"
-        Me.ArticulosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ArticulosToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.ArticulosToolStripMenuItem.Text = "&Articulos"
         '
         'MenuIngreso
@@ -279,7 +279,7 @@ Partial Class FrmPrincipal
         'ConsultasVentasToolStripMenuItem
         '
         Me.ConsultasVentasToolStripMenuItem.Name = "ConsultasVentasToolStripMenuItem"
-        Me.ConsultasVentasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConsultasVentasToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.ConsultasVentasToolStripMenuItem.Text = "Consultas Ventas"
         '
         'MenuSalir
