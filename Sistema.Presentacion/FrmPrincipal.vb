@@ -2,6 +2,13 @@
 
 Public Class FrmPrincipal
 
+
+    Dim _IdUsuario As String
+    Dim _IdRol As String
+    Dim _Rol As String
+    Dim _Nombre As String
+
+
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
         ' Cree una nueva instancia del formulario secundario.
         Dim ChildForm As New System.Windows.Forms.Form
@@ -85,12 +92,73 @@ Public Class FrmPrincipal
 
     Private m_ChildFormNumber As Integer
 
-    Private Sub ToolStripStatusLabel_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel.Click
+    Public Property IdUsuario As String
+        Get
+            Return _IdUsuario
+        End Get
+        Set(value As String)
+            _IdUsuario = value
+        End Set
+    End Property
 
-    End Sub
+    Public Property IdRol As String
+        Get
+            Return _IdRol
+        End Get
+        Set(value As String)
+            _IdRol = value
+        End Set
+    End Property
+
+    Public Property Rol As String
+        Get
+            Return _Rol
+        End Get
+        Set(value As String)
+            _Rol = value
+        End Set
+    End Property
+
+    Public Property Nombre As String
+        Get
+            Return _Nombre
+        End Get
+        Set(value As String)
+            _Nombre = value
+        End Set
+    End Property
+
+
 
     Private Sub FormularioPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TsLName.Text = $"Desarrollado por: Isaac Estrada, Usuario: {Nombre}"
+        MsgBox($"Bienvenido : {Nombre}", vbOKOnly + vbInformation, "Bienvenido al sistema")
 
+        If (Me.Rol = "Administrador") Then
+            MenuAlmacen.Enabled = True
+            MenuIngreso.Enabled = True
+            MenuVentas.Enabled = True
+            MenuAcceso.Enabled = True
+            MenuConsultas.Enabled = True
+        ElseIf (Me.Rol = "Almacenero") Then
+            MenuAlmacen.Enabled = True
+            MenuIngreso.Enabled = False
+            MenuVentas.Enabled = False
+            MenuAcceso.Enabled = False
+            MenuConsultas.Enabled = False
+        ElseIf (Me.Rol = "Vendedor") Then
+            MenuAlmacen.Enabled = False
+            MenuIngreso.Enabled = False
+            MenuVentas.Enabled = True
+            MenuAcceso.Enabled = False
+            MenuConsultas.Enabled = False
+        Else
+            MenuAlmacen.Enabled = False
+            MenuIngreso.Enabled = False
+            MenuVentas.Enabled = False
+            MenuAcceso.Enabled = False
+            MenuConsultas.Enabled = False
+        End If
     End Sub
 
     Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
@@ -115,5 +183,15 @@ Public Class FrmPrincipal
         Dim frm As New FrmUsuario
         frm.MdiParent = Me
         frm.Show()
+    End Sub
+
+    Private Sub MenuSalir_Click(sender As Object, e As EventArgs) Handles MenuSalir.Click
+        If (MsgBox("¿Desea salir del sistema?", vbYesNo + vbQuestion, "Salir del sistema") = vbYes) Then
+            End
+        End If
+    End Sub
+
+    Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        End
     End Sub
 End Class

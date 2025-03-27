@@ -4,7 +4,6 @@
     End Sub
 
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-
         Try
             Dim Email As String
             Dim Clave As String
@@ -27,6 +26,10 @@
                     Else
                         'Si el usuario esta activo
                         Me.Hide()
+                        FrmPrincipal.IdUsuario = Obj.IdUsuario
+                        FrmPrincipal.IdRol = Obj.IdRol
+                        FrmPrincipal.Rol = Obj.Rol
+                        FrmPrincipal.Nombre = Obj.Nombre
                         FrmPrincipal.ShowDialog()
                         Me.Close()
                     End If
@@ -37,5 +40,9 @@
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbCritical, "Error")
         End Try
+    End Sub
+
+    Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
