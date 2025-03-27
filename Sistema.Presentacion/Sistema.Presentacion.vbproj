@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{13CC4A04-B501-47D1-90AE-273E8687B3C7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Sistema.Presentacion.My.MyApplication</StartupObject>
+    <StartupObject>Sistema.Presentacion.FrmLogin</StartupObject>
     <RootNamespace>Sistema.Presentacion</RootNamespace>
     <AssemblyName>Sistema.Presentacion</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -85,10 +85,10 @@
     <Compile Include="FrmCategoria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormularioPrincipal.Designer.vb">
-      <DependentUpon>FormularioPrincipal.vb</DependentUpon>
+    <Compile Include="FrmPrincipal.Designer.vb">
+      <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormularioPrincipal.vb">
+    <Compile Include="FrmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.vb">
@@ -122,8 +122,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FormularioPrincipal.resx">
-      <DependentUpon>FormularioPrincipal.vb</DependentUpon>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArticulo.resx">
       <DependentUpon>FrmArticulo.vb</DependentUpon>

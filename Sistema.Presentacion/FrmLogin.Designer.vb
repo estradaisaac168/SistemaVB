@@ -55,6 +55,7 @@ Partial Class FrmLogin
         '
         'TxtEmail
         '
+        Me.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtEmail.Location = New System.Drawing.Point(114, 101)
         Me.TxtEmail.Name = "TxtEmail"
         Me.TxtEmail.Size = New System.Drawing.Size(259, 20)
@@ -62,11 +63,12 @@ Partial Class FrmLogin
         '
         'TxtClave
         '
+        Me.TxtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtClave.Location = New System.Drawing.Point(114, 156)
         Me.TxtClave.Name = "TxtClave"
+        Me.TxtClave.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TxtClave.Size = New System.Drawing.Size(259, 20)
         Me.TxtClave.TabIndex = 3
-        Me.TxtClave.UseSystemPasswordChar = True
         '
         'BtnLogin
         '

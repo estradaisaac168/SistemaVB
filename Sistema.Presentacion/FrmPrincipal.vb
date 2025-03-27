@@ -1,6 +1,6 @@
 ﻿Imports System.Windows.Forms
 
-Public Class FormularioPrincipal
+Public Class FrmPrincipal
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
         ' Cree una nueva instancia del formulario secundario.

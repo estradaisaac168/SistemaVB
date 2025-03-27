@@ -35,7 +35,7 @@ Public Class UsuarioBLL
 
 
 
-    Public Function Buscar(Email As String, Clave As String) As Usuario
+    Public Function Login(Email As String, Clave As String) As Usuario
         Try
             Dim UsuarioActual As New Usuario
             Dim Datos As New UsuarioDAL
@@ -46,7 +46,7 @@ Public Class UsuarioBLL
                 UsuarioActual.IdRol = Tabla.Rows(0).Item(1).ToString
                 UsuarioActual.Rol = Tabla.Rows(0).Item(2).ToString
                 UsuarioActual.Nombre = Tabla.Rows(0).Item(3).ToString
-                UsuarioActual.Estado = Tabla.Rows(0).Item(4).ToString
+                UsuarioActual.Estado = Tabla.Rows(0).Item(4)
 
                 Return UsuarioActual
             Else
