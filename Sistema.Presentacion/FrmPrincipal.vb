@@ -206,4 +206,10 @@ Public Class FrmPrincipal
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
+    Private Sub ComprasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprasToolStripMenuItem.Click
+        Dim frm As New FrmIngreso
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 End Class

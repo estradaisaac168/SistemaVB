@@ -241,13 +241,13 @@ Partial Class FrmPrincipal
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.ClientesToolStripMenuItem.Text = "Clien&tes"
         '
         'VentasToolStripMenuItem1
         '
         Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
         Me.VentasToolStripMenuItem1.Text = "&Ventas"
         '
         'MenuAcceso
@@ -260,13 +260,13 @@ Partial Class FrmPrincipal
         'RolesToolStripMenuItem
         '
         Me.RolesToolStripMenuItem.Name = "RolesToolStripMenuItem"
-        Me.RolesToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
+        Me.RolesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RolesToolStripMenuItem.Text = "&Roles"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UsuariosToolStripMenuItem.Text = "&Usuarios"
         '
         'MenuConsultas
@@ -279,7 +279,7 @@ Partial Class FrmPrincipal
         'ConsultasVentasToolStripMenuItem
         '
         Me.ConsultasVentasToolStripMenuItem.Name = "ConsultasVentasToolStripMenuItem"
-        Me.ConsultasVentasToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.ConsultasVentasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConsultasVentasToolStripMenuItem.Text = "Consultas Ventas"
         '
         'MenuSalir
@@ -384,6 +384,7 @@ Partial Class FrmPrincipal
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "FrmPrincipal"
