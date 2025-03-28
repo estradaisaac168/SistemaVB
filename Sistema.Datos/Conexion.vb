@@ -56,8 +56,8 @@ Public Class Conexion
 
     Public Sub New()
         Me.Base = "db_sistemas"
-        'Me.Servidor = "DESKTOP-JSC6DST\SQLEXPRESS"
-        Me.Servidor = "PC01548"
+        Me.Servidor = "DESKTOP-JSC6DST\SQLEXPRESS"
+        'Me.Servidor = "PC01548"
         Me.Usuario = "sa"
         Me.Clave = "Coco14.negrita90"
         Me.conn = New SqlConnection(CrearCadena)

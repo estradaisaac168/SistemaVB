@@ -139,11 +139,10 @@ Public Class PersonaDAL
         Try
             Dim Comando As New SqlCommand("persona_insertar", MyBase.conn)
             Comando.CommandType = CommandType.StoredProcedure
-            Comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = Obj.IdPersona
-            Comando.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = Obj.TipoPersona
+            Comando.Parameters.Add("@tipo_persona", SqlDbType.VarChar).Value = Obj.TipoPersona
             Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre
             Comando.Parameters.Add("@tipo_documento", SqlDbType.VarChar).Value = Obj.TipoDocumento
-            Comando.Parameters.Add("@numero_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento
+            Comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento
             Comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion
             Comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono
             Comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email
@@ -166,10 +165,10 @@ Public Class PersonaDAL
             Dim Comando As New SqlCommand("persona_actualizar", MyBase.conn)
             Comando.CommandType = CommandType.StoredProcedure
             Comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = Obj.IdPersona
-            Comando.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = Obj.TipoPersona
+            Comando.Parameters.Add("@tipo_persona", SqlDbType.VarChar).Value = Obj.TipoPersona
             Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre
             Comando.Parameters.Add("@tipo_documento", SqlDbType.VarChar).Value = Obj.TipoDocumento
-            Comando.Parameters.Add("@numero_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento
+            Comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento
             Comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion
             Comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono
             Comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email

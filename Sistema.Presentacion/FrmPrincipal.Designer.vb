@@ -203,13 +203,13 @@ Partial Class FrmPrincipal
         'CategoriasToolStripMenuItem
         '
         Me.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CategoriasToolStripMenuItem.Text = "Cate&gorias"
         '
         'ArticulosToolStripMenuItem
         '
         Me.ArticulosToolStripMenuItem.Name = "ArticulosToolStripMenuItem"
-        Me.ArticulosToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ArticulosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ArticulosToolStripMenuItem.Text = "&Articulos"
         '
         'MenuIngreso
@@ -260,13 +260,13 @@ Partial Class FrmPrincipal
         'RolesToolStripMenuItem
         '
         Me.RolesToolStripMenuItem.Name = "RolesToolStripMenuItem"
-        Me.RolesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RolesToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
         Me.RolesToolStripMenuItem.Text = "&Roles"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
         Me.UsuariosToolStripMenuItem.Text = "&Usuarios"
         '
         'MenuConsultas

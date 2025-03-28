@@ -1,6 +1,6 @@
 ﻿Imports Sistema.Exceptions
 
-Public Class FrmProveedor
+Public Class FrmCliente
 
 
     Private Sub Formato()
@@ -45,7 +45,7 @@ Public Class FrmProveedor
     Private Sub Listar()
         Try
             Dim Neg As New Negocio.PersonaBLL
-            DgvListado.DataSource = Neg.ListarProveedores()
+            DgvListado.DataSource = Neg.ListarClientes()
             LblTotal.Text = "Total Registros: " & DgvListado.DataSource.Rows.Count
             Me.Formato()
             Me.Limpiar()
@@ -63,7 +63,7 @@ Public Class FrmProveedor
             Dim Neg As New Negocio.PersonaBLL
             Dim Valor As String
             Valor = TxtValor.Text
-            DgvListado.DataSource = Neg.BuscarProveedores(Valor)
+            DgvListado.DataSource = Neg.BuscarClientes(Valor)
             LblTotal.Text = "Total Registros: " & DgvListado.DataSource.Rows.Count
             Me.Formato()
         Catch ex As BusinessLogicException
@@ -84,11 +84,6 @@ Public Class FrmProveedor
     End Sub
 
 
-
-    Private Sub FrmProveedor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Listar()
-    End Sub
-
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
         Me.Buscar()
     End Sub
@@ -99,7 +94,7 @@ Public Class FrmProveedor
                 Dim Obj As New Entidades.Persona
                 Dim Neg As New Negocio.PersonaBLL
 
-                Obj.TipoPersona = "Proveedor"
+                Obj.TipoPersona = "Cliente"
                 Obj.Nombre = TxtNombre.Text
                 Obj.TipoDocumento = CboTipoDocumento.Text 'Se coloca text y no selectedvalue porque no se ha llenado el combo desde la base de datos
                 Obj.NumeroDocumento = TxtNumeroDocumento.Text
@@ -126,7 +121,7 @@ Public Class FrmProveedor
         Me.Limpiar()
 
         'Regresar al tab numero uno
-        TabProveedor.SelectedIndex = 0
+        TabCliente.SelectedIndex = 0
     End Sub
 
     Private Sub DgvListado_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListado.CellContentDoubleClick
@@ -141,7 +136,7 @@ Public Class FrmProveedor
             TxtTelefono.Text = DgvListado.Rows(Fila).Cells(7).Value
             TxtEmail.Text = DgvListado.Rows(Fila).Cells(8).Value
 
-            TabProveedor.SelectedIndex = 1
+            TabCliente.SelectedIndex = 1
             BtnActualizar.Visible = True
             BtnGuardar.Visible = False
         Catch ex As Exception
@@ -156,7 +151,7 @@ Public Class FrmProveedor
                 Dim Neg As New Negocio.PersonaBLL
 
                 Obj.IdPersona = TxtID.Text
-                Obj.TipoPersona = "Proveedor"
+                Obj.TipoPersona = "Cliente"
                 Obj.Nombre = TxtNombre.Text
                 Obj.TipoDocumento = CboTipoDocumento.Text 'Se coloca text y no selectedvalue porque no se ha llenado el combo desde la base de datos
                 Obj.NumeroDocumento = TxtNumeroDocumento.Text
@@ -227,5 +222,9 @@ Public Class FrmProveedor
                 MsgBox(ex.Message)
             End Try
         End If
+    End Sub
+
+    Private Sub FrmCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Limpiar()
     End Sub
 End Class
