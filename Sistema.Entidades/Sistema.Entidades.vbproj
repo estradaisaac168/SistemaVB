@@ -67,6 +67,7 @@
     <Compile Include="Articulo.vb" />
     <Compile Include="Categoria.vb" />
     <Compile Include="Database.vb" />
+    <Compile Include="Ingreso.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
