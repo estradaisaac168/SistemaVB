@@ -42,6 +42,24 @@ Public Class IngresoBLL
     End Function
 
 
+
+    Public Function ListarDetalle(Id As Integer) As DataTable
+        Try
+            Dim Datos As New IngresoDAL()
+            Dim Tabla As New DataTable
+            Tabla = Datos.ListarDetalle(Id)
+            Return Tabla
+
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al realizar la búsqueda. Intente nuevamente.")
+
+        Catch ex As Exception
+            Throw New BusinessLogicException("Error desconocido al intentar realizar la búsqueda.")
+        End Try
+        Return Nothing
+    End Function
+
+
     Public Function Insertar(Obj As Ingreso, Detalle As DataTable) As Boolean
 
         Dim Inserted = False

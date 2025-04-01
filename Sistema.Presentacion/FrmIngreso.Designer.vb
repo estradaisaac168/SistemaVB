@@ -30,6 +30,15 @@ Partial Class FrmIngreso
         Me.TxtValor = New System.Windows.Forms.TextBox()
         Me.LblTotal = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.PanelMostrarDetalle = New System.Windows.Forms.Panel()
+        Me.BtnCerrarDetalle = New System.Windows.Forms.Button()
+        Me.LblTotalDetalle = New System.Windows.Forms.Label()
+        Me.LblTotalImpuesto = New System.Windows.Forms.Label()
+        Me.LblSubTotal = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.DgvMostrarDetalle = New System.Windows.Forms.DataGridView()
         Me.BtnAnular = New System.Windows.Forms.Button()
         Me.DgvListado = New System.Windows.Forms.DataGridView()
         Me.TabArticulo = New System.Windows.Forms.TabControl()
@@ -57,7 +66,7 @@ Partial Class FrmIngreso
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtNumeroComprobante = New System.Windows.Forms.TextBox()
         Me.TxtSerieDocumento = New System.Windows.Forms.TextBox()
-        Me.CnbComprobante = New System.Windows.Forms.ComboBox()
+        Me.CboTipoComprobante = New System.Windows.Forms.ComboBox()
         Me.BtnBuscarProveedor = New System.Windows.Forms.Button()
         Me.TxtNombreProveedor = New System.Windows.Forms.TextBox()
         Me.TxtIdProveedor = New System.Windows.Forms.TextBox()
@@ -67,6 +76,8 @@ Partial Class FrmIngreso
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.ErrorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.TabPage1.SuspendLayout()
+        Me.PanelMostrarDetalle.SuspendLayout()
+        CType(Me.DgvMostrarDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgvListado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabArticulo.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -130,6 +141,7 @@ Partial Class FrmIngreso
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.PanelMostrarDetalle)
         Me.TabPage1.Controls.Add(Me.BtnAnular)
         Me.TabPage1.Controls.Add(Me.ChkSeleccionar)
         Me.TabPage1.Controls.Add(Me.BtnBuscar)
@@ -143,6 +155,108 @@ Partial Class FrmIngreso
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Listado"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'PanelMostrarDetalle
+        '
+        Me.PanelMostrarDetalle.BackColor = System.Drawing.Color.DimGray
+        Me.PanelMostrarDetalle.Controls.Add(Me.BtnCerrarDetalle)
+        Me.PanelMostrarDetalle.Controls.Add(Me.LblTotalDetalle)
+        Me.PanelMostrarDetalle.Controls.Add(Me.LblTotalImpuesto)
+        Me.PanelMostrarDetalle.Controls.Add(Me.LblSubTotal)
+        Me.PanelMostrarDetalle.Controls.Add(Me.Label11)
+        Me.PanelMostrarDetalle.Controls.Add(Me.Label10)
+        Me.PanelMostrarDetalle.Controls.Add(Me.Label9)
+        Me.PanelMostrarDetalle.Controls.Add(Me.DgvMostrarDetalle)
+        Me.PanelMostrarDetalle.Location = New System.Drawing.Point(70, 90)
+        Me.PanelMostrarDetalle.Name = "PanelMostrarDetalle"
+        Me.PanelMostrarDetalle.Size = New System.Drawing.Size(784, 397)
+        Me.PanelMostrarDetalle.TabIndex = 7
+        Me.PanelMostrarDetalle.Visible = False
+        '
+        'BtnCerrarDetalle
+        '
+        Me.BtnCerrarDetalle.BackColor = System.Drawing.Color.Transparent
+        Me.BtnCerrarDetalle.Location = New System.Drawing.Point(699, 23)
+        Me.BtnCerrarDetalle.Name = "BtnCerrarDetalle"
+        Me.BtnCerrarDetalle.Size = New System.Drawing.Size(67, 23)
+        Me.BtnCerrarDetalle.TabIndex = 7
+        Me.BtnCerrarDetalle.Text = "Cerrar"
+        Me.BtnCerrarDetalle.UseVisualStyleBackColor = False
+        '
+        'LblTotalDetalle
+        '
+        Me.LblTotalDetalle.AutoSize = True
+        Me.LblTotalDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalDetalle.ForeColor = System.Drawing.Color.White
+        Me.LblTotalDetalle.Location = New System.Drawing.Point(741, 351)
+        Me.LblTotalDetalle.Name = "LblTotalDetalle"
+        Me.LblTotalDetalle.Size = New System.Drawing.Size(17, 17)
+        Me.LblTotalDetalle.TabIndex = 6
+        Me.LblTotalDetalle.Text = "0"
+        '
+        'LblTotalImpuesto
+        '
+        Me.LblTotalImpuesto.AutoSize = True
+        Me.LblTotalImpuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalImpuesto.ForeColor = System.Drawing.Color.White
+        Me.LblTotalImpuesto.Location = New System.Drawing.Point(741, 315)
+        Me.LblTotalImpuesto.Name = "LblTotalImpuesto"
+        Me.LblTotalImpuesto.Size = New System.Drawing.Size(17, 17)
+        Me.LblTotalImpuesto.TabIndex = 5
+        Me.LblTotalImpuesto.Text = "0"
+        '
+        'LblSubTotal
+        '
+        Me.LblSubTotal.AutoSize = True
+        Me.LblSubTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSubTotal.ForeColor = System.Drawing.Color.White
+        Me.LblSubTotal.Location = New System.Drawing.Point(741, 278)
+        Me.LblSubTotal.Name = "LblSubTotal"
+        Me.LblSubTotal.Size = New System.Drawing.Size(17, 17)
+        Me.LblSubTotal.TabIndex = 4
+        Me.LblSubTotal.Text = "0"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(631, 355)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(31, 13)
+        Me.Label11.TabIndex = 3
+        Me.Label11.Text = "Total"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(631, 319)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(77, 13)
+        Me.Label10.TabIndex = 2
+        Me.Label10.Text = "Total Impuesto"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.Location = New System.Drawing.Point(631, 282)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(53, 13)
+        Me.Label9.TabIndex = 1
+        Me.Label9.Text = "Sub Total"
+        '
+        'DgvMostrarDetalle
+        '
+        Me.DgvMostrarDetalle.AllowUserToAddRows = False
+        Me.DgvMostrarDetalle.AllowUserToDeleteRows = False
+        Me.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvMostrarDetalle.Location = New System.Drawing.Point(20, 68)
+        Me.DgvMostrarDetalle.Name = "DgvMostrarDetalle"
+        Me.DgvMostrarDetalle.ReadOnly = True
+        Me.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvMostrarDetalle.Size = New System.Drawing.Size(746, 191)
+        Me.DgvMostrarDetalle.TabIndex = 0
         '
         'BtnAnular
         '
@@ -376,7 +490,7 @@ Partial Class FrmIngreso
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.TxtNumeroComprobante)
         Me.GroupBox1.Controls.Add(Me.TxtSerieDocumento)
-        Me.GroupBox1.Controls.Add(Me.CnbComprobante)
+        Me.GroupBox1.Controls.Add(Me.CboTipoComprobante)
         Me.GroupBox1.Controls.Add(Me.BtnBuscarProveedor)
         Me.GroupBox1.Controls.Add(Me.TxtNombreProveedor)
         Me.GroupBox1.Controls.Add(Me.TxtIdProveedor)
@@ -422,15 +536,15 @@ Partial Class FrmIngreso
         Me.TxtSerieDocumento.Size = New System.Drawing.Size(151, 20)
         Me.TxtSerieDocumento.TabIndex = 20
         '
-        'CnbComprobante
+        'CboTipoComprobante
         '
-        Me.CnbComprobante.FormattingEnabled = True
-        Me.CnbComprobante.Items.AddRange(New Object() {"Factura", "Boleta", "Ticket"})
-        Me.CnbComprobante.Location = New System.Drawing.Point(104, 79)
-        Me.CnbComprobante.Name = "CnbComprobante"
-        Me.CnbComprobante.Size = New System.Drawing.Size(159, 21)
-        Me.CnbComprobante.TabIndex = 19
-        Me.CnbComprobante.Text = "Factura"
+        Me.CboTipoComprobante.FormattingEnabled = True
+        Me.CboTipoComprobante.Items.AddRange(New Object() {"Factura", "Boleta", "Ticket"})
+        Me.CboTipoComprobante.Location = New System.Drawing.Point(104, 79)
+        Me.CboTipoComprobante.Name = "CboTipoComprobante"
+        Me.CboTipoComprobante.Size = New System.Drawing.Size(159, 21)
+        Me.CboTipoComprobante.TabIndex = 19
+        Me.CboTipoComprobante.Text = "Factura"
         '
         'BtnBuscarProveedor
         '
@@ -507,6 +621,9 @@ Partial Class FrmIngreso
         Me.Text = "Ingresos"
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.PanelMostrarDetalle.ResumeLayout(False)
+        Me.PanelMostrarDetalle.PerformLayout()
+        CType(Me.DgvMostrarDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgvListado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabArticulo.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
@@ -545,7 +662,7 @@ Partial Class FrmIngreso
     Friend WithEvents TxtNombreProveedor As TextBox
     Friend WithEvents TxtIdProveedor As TextBox
     Friend WithEvents BtnBuscarProveedor As Button
-    Friend WithEvents CnbComprobante As ComboBox
+    Friend WithEvents CboTipoComprobante As ComboBox
     Friend WithEvents TxtInpuesto As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TxtNumeroComprobante As TextBox
@@ -567,4 +684,13 @@ Partial Class FrmIngreso
     Friend WithEvents TxtBuscarArticulo As TextBox
     Friend WithEvents DgvArticulos As DataGridView
     Friend WithEvents LblTotalArticulos As Label
+    Friend WithEvents PanelMostrarDetalle As Panel
+    Friend WithEvents LblTotalDetalle As Label
+    Friend WithEvents LblTotalImpuesto As Label
+    Friend WithEvents LblSubTotal As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents DgvMostrarDetalle As DataGridView
+    Friend WithEvents BtnCerrarDetalle As Button
 End Class

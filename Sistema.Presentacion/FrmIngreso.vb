@@ -2,7 +2,7 @@
 
 Public Class FrmIngreso
 
-    Private DtDetalle As DataTable
+    Private DtDetalle As New DataTable
 
     Private Sub Formato()
         DgvListado.Columns(0).Visible = False
@@ -78,18 +78,19 @@ Public Class FrmIngreso
 
 
     Private Sub Limpiar()
-        'BtnGuardar.Visible = True
+        BtnGuardar.Visible = True
         'BtnActualizar.Visible = False
-        'TxtValor.Text = ""
-        'TxtID.Text = ""
-        'TxtCodigo.Text = ""
-        'TxtNombre.Text = ""
-        'TxtPrecioVenta.Text = ""
-        'TxtStock.Text = ""
-        'TxtImagen.Text = ""
-        'PicImage.Image = Nothing
-        'TxtDescripcion.Text = ""
-        'RutaOrigen = ""
+        TxtValor.Text = ""
+        TxtID.Text = ""
+        TxtCodigo.Text = ""
+        TxtIdProveedor.Text = ""
+        TxtNombreProveedor.Text = ""
+        TxtSerieDocumento.Text = ""
+        TxtNumeroComprobante.Text = ""
+        DtDetalle.Clear()
+        TxtSubTotal.Text = 0
+        TxtTotalInpuesto.Text = 0
+        TxtTotal.Text = 0
     End Sub
 
 
@@ -295,13 +296,106 @@ Public Class FrmIngreso
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         Try
-            If () Then
-            Else
+            If (TxtIdProveedor.Text <> " " And CboTipoComprobante.Text <> " " And TxtNumeroComprobante.Text <> " " And DtDetalle.Rows.Count > 0) Then
+                Dim Obj As New Entidades.Ingreso
+                Dim Neg As New Negocio.IngresoBLL
 
+                Obj.IdUsuario = Variables.IdUsuario
+                Obj.IdProveedor = TxtIdProveedor.Text
+                Obj.TipoComprobante = CboTipoComprobante.Text
+                Obj.SerieComprobante = TxtSerieDocumento.Text
+                Obj.NumeroComprobante = TxtNumeroComprobante.Text
+                Obj.Impuesto = TxtInpuesto.Text
+                Obj.Total = TxtTotal.Text
+
+                If (Neg.Insertar(Obj, DtDetalle)) Then
+                    MsgBox("Se inserto correctamente", vbOKOnly + vbInformation, "Guardando")
+                    Me.Listar()
+                Else
+                    MsgBox("No se pudo insertar", vbOKOnly + vbCritical, "Error al guardar")
+                End If
+
+            Else
+                MsgBox("Faltan datos por ingresar", vbOKOnly + vbCritical, "Error al guardar")
             End If
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub BtnCerrarDetalle_Click(sender As Object, e As EventArgs) Handles BtnCerrarDetalle.Click
+        PanelMostrarDetalle.Visible = False
+    End Sub
+
+    Private Sub DgvListado_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListado.CellDoubleClick
+        Try
+            Dim Neg As New Negocio.IngresoBLL
+
+            'Obtengo la fila seleccionada con la columan uno que es el idingreso
+            DgvMostrarDetalle.DataSource = Neg.ListarDetalle(DgvListado.SelectedCells.Item(1).Value)
+
+            Dim Total As Decimal = 0
+            Dim SubTotal As Decimal = 0
+            Dim TotalImpuesto As Decimal = 0
+
+            Total = DgvListado.SelectedCells.Item(10).Value
+            SubTotal = Math.Round(Total / (1 + DgvListado.SelectedCells.Item(9).Value), 2)
+            TotalImpuesto = Total - SubTotal
+
+            LblTotalDetalle.Text = Total
+            LblSubTotal.Text = SubTotal
+            LblTotalImpuesto.Text = TotalImpuesto
+
+            PanelMostrarDetalle.Visible = True
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+        Me.Limpiar()
+        TabArticulo.SelectedIndex = 0
+    End Sub
+
+
+    'Evento Check()
+    Private Sub ChkSeleccionar_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSeleccionar.CheckedChanged
+
+        If ChkSeleccionar.CheckState = CheckState.Checked Then
+            Me.MostrarComponentes()
+        Else
+            Me.OcultarComponentes()
+        End If
+    End Sub
+
+
+    'Cuando se hace click en una celda de contenido
+    Private Sub DgvListado_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListado.CellContentClick
+        If e.ColumnIndex = DgvListado.Columns.Item("Seleccionar").Index Then
+            Dim chkCell As DataGridViewCheckBoxCell = DgvListado.Rows(e.RowIndex).Cells("Seleccionar")
+            chkCell.Value = Not chkCell.Value
+        End If
+    End Sub
+
+    Private Sub BtnAnular_Click(sender As Object, e As EventArgs) Handles BtnAnular.Click
+        If (MsgBox("Deseas de anular los ingresos seleccionados?", vbYesNo + vbQuestion, "Anular ingreso") = vbYes) Then
+            Try
+
+                Dim Neg As New Negocio.IngresoBLL
+
+                For Each row As DataGridViewRow In DgvListado.Rows
+                    Dim marcado As Boolean = Convert.ToBoolean(row.Cells("Seleccionar").Value)
+                    If marcado Then
+                        Dim oneKey As Integer = Convert.ToInt32(row.Cells("ID").Value)
+                        Neg.Anular(oneKey)
+                    End If
+                Next
+                Listar()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
     End Sub
 End Class
