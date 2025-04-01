@@ -87,6 +87,7 @@
     <Compile Include="PersonaDAL.vb" />
     <Compile Include="RolDAL.vb" />
     <Compile Include="UsuarioDAL.vb" />
+    <Compile Include="VentaDAL.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

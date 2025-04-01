@@ -85,6 +85,7 @@
     <Compile Include="PersonaBLL.vb" />
     <Compile Include="RolBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />
+    <Compile Include="VentaBLL.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
