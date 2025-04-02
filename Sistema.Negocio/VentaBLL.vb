@@ -44,6 +44,22 @@ Public Class VentaBLL
     End Function
 
 
+    Public Function ConsultaFecha(FechaInicio As Date, FechaFin As Date) As DataTable
+        Try
+            Dim Datos As New VentaDAL()
+            Dim Tabla As New DataTable
+            Tabla = Datos.ConsultaFecha(FechaInicio, FechaFin)
+            Return Tabla
+
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al realizar la búsqueda. Intente nuevamente.")
+
+        Catch ex As Exception
+            Throw New BusinessLogicException("Error desconocido al intentar realizar la búsqueda.")
+        End Try
+        Return Nothing
+    End Function
+
 
     Public Function ListarDetalle(Id As Integer) As DataTable
         Try

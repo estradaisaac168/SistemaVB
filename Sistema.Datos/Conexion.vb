@@ -55,7 +55,8 @@ Public Class Conexion
     End Property
 
     Public Sub New()
-        Me.Base = "db_sistemas"
+        'Me.Base = "db_sistemas"
+        Me.Base = "db_sistemasprod" 'Solamente para el instalador despues de haber hecho el backup
         'Me.Servidor = "DESKTOP-JSC6DST\SQLEXPRESS"
         Me.Servidor = "PC01548"
         Me.Usuario = "sa"
