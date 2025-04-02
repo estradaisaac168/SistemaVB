@@ -1,6 +1,7 @@
 ﻿Imports Sistema.Entidades
 Imports Sistema.Exceptions
 Imports System.Data.SqlClient
+Imports System.Security.Cryptography
 
 Public Class VentaDAL
     Inherits Conexion
@@ -56,7 +57,7 @@ Public Class VentaDAL
             Dim Tabla As New DataTable
             Dim Comando As New SqlCommand("venta_listar_detalle", MyBase.conn)
             Comando.CommandType = CommandType.StoredProcedure
-            Comando.Parameters.Add("@idingreso", SqlDbType.Int).Value = Id
+            Comando.Parameters.Add("@idventa", SqlDbType.Int).Value = Id
             MyBase.conn.Open()
             Resultado = Comando.ExecuteReader()
             Tabla.Load(Resultado)
@@ -71,7 +72,7 @@ Public Class VentaDAL
     End Function
 
 
-    Public Sub Insertar(Obj As Venta)
+    Public Sub Insertar(Obj As Venta, Detalle As DataTable)
 
         Try
 
@@ -79,14 +80,14 @@ Public Class VentaDAL
             Comando.CommandType = CommandType.StoredProcedure
             Comando.Parameters.Add("@idventa", SqlDbType.Int).Value = Obj.IdVenta
             Comando.Parameters("@idventa").Direction = ParameterDirection.Output
-            Comando.Parameters.Add("@idcliente", SqlDbType.Int).Value = Obj.IdCliente
             Comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = Obj.IdUsuario
+            Comando.Parameters.Add("@idcliente", SqlDbType.Int).Value = Obj.IdCliente
             Comando.Parameters.Add("@tipo_comprobante", SqlDbType.VarChar).Value = Obj.TipoComprobante
             Comando.Parameters.Add("@serie_comprobante", SqlDbType.VarChar).Value = Obj.SerieComprobante
             Comando.Parameters.Add("@num_comprobante", SqlDbType.VarChar).Value = Obj.NumeroComprobante
             Comando.Parameters.Add("@impuesto", SqlDbType.Decimal).Value = Obj.Impuesto
             Comando.Parameters.Add("@total", SqlDbType.Decimal).Value = Obj.Total
-            Comando.Parameters.Add("@estado", SqlDbType.VarChar).Value = Obj.Estado
+            Comando.Parameters.Add("@detalle", SqlDbType.Structured).Value = Detalle
 
 
             MyBase.conn.Open()
@@ -109,7 +110,7 @@ Public Class VentaDAL
 
             Dim Comando As New SqlCommand("venta_anular", MyBase.conn)
             Comando.CommandType = CommandType.StoredProcedure
-            Comando.Parameters.Add("@idingreso", SqlDbType.Int).Value = Id
+            Comando.Parameters.Add("@idventa", SqlDbType.Int).Value = Id
             MyBase.conn.Open()
             Comando.ExecuteNonQuery()
             MyBase.conn.Close()

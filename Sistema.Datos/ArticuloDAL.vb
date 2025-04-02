@@ -49,6 +49,30 @@ Public Class ArticuloDAL
     End Function
 
 
+
+    Public Function BuscarVenta(Valor As String) As DataTable
+        Try
+            Dim Resultado As SqlDataReader
+            Dim Tabla As New DataTable
+            Dim Comando As New SqlCommand("articulo_buscar_venta", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor
+            MyBase.conn.Open()
+            Resultado = Comando.ExecuteReader()
+            Tabla.Load(Resultado)
+            MyBase.conn.Close()
+            Return Tabla
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+
+        Finally
+            MyBase.conn.Close()
+        End Try
+        'Return Nothing
+    End Function
+
+
+
     Public Function BuscarCodigo(Valor As String) As DataTable
         Try
             Dim Resultado As SqlDataReader
@@ -69,6 +93,31 @@ Public Class ArticuloDAL
         End Try
         'Return Nothing
     End Function
+
+
+
+    Public Function BuscarCodigoVenta(Valor As String) As DataTable
+        Try
+            Dim Resultado As SqlDataReader
+            Dim Tabla As New DataTable
+            Dim Comando As New SqlCommand("articulo_buscar_codigo_venta", MyBase.conn)
+            Comando.CommandType = CommandType.StoredProcedure
+            Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor
+            MyBase.conn.Open()
+            Resultado = Comando.ExecuteReader()
+            Tabla.Load(Resultado)
+            MyBase.conn.Close()
+            Return Tabla
+        Catch ex As Exception
+            Throw New DataAccessException("Error al acceder a la base de datos: ")
+
+        Finally
+            MyBase.conn.Close()
+        End Try
+        'Return Nothing
+    End Function
+
+
 
     Public Sub Insertar(Obj As Articulo)
         Try

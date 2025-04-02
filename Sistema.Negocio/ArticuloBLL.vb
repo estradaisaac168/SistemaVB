@@ -34,6 +34,21 @@ Public Class ArticuloBLL
     End Function
 
 
+    Public Function BuscarVenta(Valor As String) As DataTable
+        Try
+            Dim Datos As New ArticuloDAL
+            Dim Tabla As New DataTable
+            Tabla = Datos.BuscarVenta(Valor)
+            Return Tabla
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al listar los articulos. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            Throw New BusinessLogicException("Error desconocido al intentar listar los articulos.")
+        End Try
+        Return Nothing
+    End Function
+
+
     Public Function BuscarCodigo(Valor As String) As Articulo
         Try
             Dim Datos As New ArticuloDAL
@@ -61,6 +76,36 @@ Public Class ArticuloBLL
         End Try
         Return Nothing
     End Function
+
+
+    Public Function BuscarCodigoVenta(Valor As String) As Articulo
+        Try
+            Dim Datos As New ArticuloDAL
+            Dim Tabla As New DataTable
+            Dim Art As New Articulo
+            Tabla = Datos.BuscarCodigoVenta(Valor)
+
+            'Valido que la tabla tenga al menos una fila
+            If (Tabla.Rows.Count > 0) Then
+
+                'Cargo los datos del articulo con los valores que necesito
+                Art.IdArticulo = Tabla.Rows(0).Item(0).ToString
+                Art.Codigo = Tabla.Rows(0).Item(1).ToString
+                Art.Nombre = Tabla.Rows(0).Item(2).ToString
+                Art.PrecioVenta = Tabla.Rows(0).Item(3).ToString
+                Art.Stock = Tabla.Rows(0).Item(4).ToString
+                Return Art
+            Else
+                Return Nothing
+            End If
+        Catch ex As DataAccessException
+            Throw New BusinessLogicException("Hubo un problema al listar los articulos. Intente nuevamente." & ex.Message)
+        Catch ex As Exception
+            Throw New BusinessLogicException("Error desconocido al intentar listar los articulos.")
+        End Try
+        Return Nothing
+    End Function
+
 
 
     Public Function Insertar(Obj As Articulo) As Boolean

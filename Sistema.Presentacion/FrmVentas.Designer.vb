@@ -42,9 +42,9 @@ Partial Class FrmVentas
         Me.TxtNumeroComprobante = New System.Windows.Forms.TextBox()
         Me.TxtSerieDocumento = New System.Windows.Forms.TextBox()
         Me.CboTipoComprobante = New System.Windows.Forms.ComboBox()
-        Me.BtnBuscarProveedor = New System.Windows.Forms.Button()
-        Me.TxtNombreProveedor = New System.Windows.Forms.TextBox()
-        Me.TxtIdProveedor = New System.Windows.Forms.TextBox()
+        Me.BtnBuscarCliente = New System.Windows.Forms.Button()
+        Me.TxtNombreCliente = New System.Windows.Forms.TextBox()
+        Me.TxtIdCliente = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -259,39 +259,39 @@ Partial Class FrmVentas
         Me.CboTipoComprobante.TabIndex = 19
         Me.CboTipoComprobante.Text = "Factura"
         '
-        'BtnBuscarProveedor
+        'BtnBuscarCliente
         '
-        Me.BtnBuscarProveedor.Location = New System.Drawing.Point(513, 27)
-        Me.BtnBuscarProveedor.Name = "BtnBuscarProveedor"
-        Me.BtnBuscarProveedor.Size = New System.Drawing.Size(142, 23)
-        Me.BtnBuscarProveedor.TabIndex = 18
-        Me.BtnBuscarProveedor.Text = "Proveedor"
-        Me.BtnBuscarProveedor.UseVisualStyleBackColor = False
+        Me.BtnBuscarCliente.Location = New System.Drawing.Point(513, 27)
+        Me.BtnBuscarCliente.Name = "BtnBuscarCliente"
+        Me.BtnBuscarCliente.Size = New System.Drawing.Size(142, 23)
+        Me.BtnBuscarCliente.TabIndex = 18
+        Me.BtnBuscarCliente.Text = "Cliente"
+        Me.BtnBuscarCliente.UseVisualStyleBackColor = False
         '
-        'TxtNombreProveedor
+        'TxtNombreCliente
         '
-        Me.TxtNombreProveedor.Location = New System.Drawing.Point(209, 29)
-        Me.TxtNombreProveedor.Name = "TxtNombreProveedor"
-        Me.TxtNombreProveedor.ReadOnly = True
-        Me.TxtNombreProveedor.Size = New System.Drawing.Size(284, 20)
-        Me.TxtNombreProveedor.TabIndex = 17
+        Me.TxtNombreCliente.Location = New System.Drawing.Point(209, 29)
+        Me.TxtNombreCliente.Name = "TxtNombreCliente"
+        Me.TxtNombreCliente.ReadOnly = True
+        Me.TxtNombreCliente.Size = New System.Drawing.Size(284, 20)
+        Me.TxtNombreCliente.TabIndex = 17
         '
-        'TxtIdProveedor
+        'TxtIdCliente
         '
-        Me.TxtIdProveedor.Location = New System.Drawing.Point(104, 29)
-        Me.TxtIdProveedor.Name = "TxtIdProveedor"
-        Me.TxtIdProveedor.ReadOnly = True
-        Me.TxtIdProveedor.Size = New System.Drawing.Size(87, 20)
-        Me.TxtIdProveedor.TabIndex = 16
+        Me.TxtIdCliente.Location = New System.Drawing.Point(104, 29)
+        Me.TxtIdCliente.Name = "TxtIdCliente"
+        Me.TxtIdCliente.ReadOnly = True
+        Me.TxtIdCliente.Size = New System.Drawing.Size(87, 20)
+        Me.TxtIdCliente.TabIndex = 16
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(18, 32)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 13)
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 9
-        Me.Label3.Text = "Proveedor (*)"
+        Me.Label3.Text = "Cliente (*)"
         '
         'GroupBox1
         '
@@ -300,9 +300,9 @@ Partial Class FrmVentas
         Me.GroupBox1.Controls.Add(Me.TxtNumeroComprobante)
         Me.GroupBox1.Controls.Add(Me.TxtSerieDocumento)
         Me.GroupBox1.Controls.Add(Me.CboTipoComprobante)
-        Me.GroupBox1.Controls.Add(Me.BtnBuscarProveedor)
-        Me.GroupBox1.Controls.Add(Me.TxtNombreProveedor)
-        Me.GroupBox1.Controls.Add(Me.TxtIdProveedor)
+        Me.GroupBox1.Controls.Add(Me.BtnBuscarCliente)
+        Me.GroupBox1.Controls.Add(Me.TxtNombreCliente)
+        Me.GroupBox1.Controls.Add(Me.TxtIdCliente)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 32)
@@ -660,9 +660,9 @@ Partial Class FrmVentas
     Friend WithEvents TxtNumeroComprobante As TextBox
     Friend WithEvents TxtSerieDocumento As TextBox
     Friend WithEvents CboTipoComprobante As ComboBox
-    Friend WithEvents BtnBuscarProveedor As Button
-    Friend WithEvents TxtNombreProveedor As TextBox
-    Friend WithEvents TxtIdProveedor As TextBox
+    Friend WithEvents BtnBuscarCliente As Button
+    Friend WithEvents TxtNombreCliente As TextBox
+    Friend WithEvents TxtIdCliente As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label5 As Label

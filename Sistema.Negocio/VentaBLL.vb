@@ -62,7 +62,7 @@ Public Class VentaBLL
     End Function
 
 
-    Public Function Insertar(Obj As Venta) As Boolean
+    Public Function Insertar(Obj As Venta, Detalle As DataTable) As Boolean
 
         Dim Inserted = False
 
@@ -71,7 +71,7 @@ Public Class VentaBLL
             Dim Datos As New VentaDAL
 
             ' Llamar al método de inserción del repositorio
-            Datos.Insertar(Obj)
+            Datos.Insertar(Obj, Detalle)
             Inserted = True
 
             ' Retornar True si la inserción fue exitosa
